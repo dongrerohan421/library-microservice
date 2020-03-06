@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+const showBanner = require("node-banner");
+(async () => {
+    await showBanner("Customers Microservice", "Create, Get, Delete Customers.", "blue", "green");
+})();
 //Load Mongoose
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");

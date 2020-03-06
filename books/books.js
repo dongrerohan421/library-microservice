@@ -5,6 +5,11 @@ const bodyParser = require("body-parser");
 //Load Mongoose
 const mongoose = require("mongoose");
 
+const showBanner = require("node-banner");
+(async () => {
+    await showBanner("Books Microservice", "Create, Get, Delete Books.", "blue", "green");
+})();
+
 require("./book");
 const Book = mongoose.model("Book");
 
