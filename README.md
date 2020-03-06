@@ -33,6 +33,14 @@ Please use below URL's to browse Customer
     - http://localhost:5555/customer/5e619dd66ba3a21e4b796294
 
 
+- **To install npm packages**
+```
+npm install --save express
+npm install --save body-parser
+npm install --save mongoose
+npm install -g nodemon
+npm install --save node-banner
+```
 - **To Start app:**
 ```
 nodemon books.js
