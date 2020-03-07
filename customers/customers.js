@@ -24,7 +24,7 @@ mongoose.connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.n
     });
 
 //Load out Model
-require("./customer");
+require("./Customer");
 const Customer = mongoose.model("Customer");
 
 //Create Customer

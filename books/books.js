@@ -10,7 +10,7 @@ const showBanner = require("node-banner");
     await showBanner("Books Microservice", "Create, Get, Delete Books.", "blue", "green");
 })();
 
-require("./book");
+require("./Book");
 const Book = mongoose.model("Book");
 
 app.use(bodyParser.json());
