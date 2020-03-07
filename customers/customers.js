@@ -1,17 +1,17 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const showBanner = require("node-banner");
+import showBanner from "node-banner";
 (async () => {
     await showBanner("Customers Microservice", "Create, Get, Delete Customers.", "blue", "green");
 })();
 //Load Mongoose
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+import { connect, model } from "mongoose";
+import { json } from "body-parser";
 
-app.use(bodyParser.json()); //allows application to receive JSON data through request
+app.use(json()); //allows application to receive JSON data through request
 
 //Connect
-mongoose.connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.net/test?retryWrites=true&w=majority", {
+connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.net/test?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     },
@@ -24,8 +24,8 @@ mongoose.connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.n
     });
 
 //Load out Model
-require("./customer");
-const Customer = mongoose.model("Customer");
+import "./customer";
+const Customer = model("Customer");
 
 //Create Customer
 app.post("/customer", (req, res) => {

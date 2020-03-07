@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-mongoose.model("Customer", {
+import { model } from "mongoose";
+model("Customer", {
     name: {
         type: String,
         require: true
