@@ -10,12 +10,25 @@ Please use below URL's to browse Book
 
 * **Create Book**
     - http://localhost:3000/book
+    ```
+    curl -X POST "http://localhost:3000/book" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"title\": \"Java from scratch\", \"author\": \"Java\", \"numberPages\": 364, \"publisher\": \"Oracle\"}"
+    ```
 * **Get Books**
     - http://localhost:3000/books
+    ```
+    curl -X GET "http://localhost:3000/books" -H "accept: application/json"
+    ```
 * **Get Book by ID**
-    - http://localhost:3000/book/5e6066bcb96aca130cd47b9c
+    - http://localhost:3000/book/5e64261290ca145e048ce980
+    ```
+    curl -X GET "http://localhost:3000/book/5e64261290ca145e048ce980" -H "accept: application/json"
+    ```
 * **Delete Book by ID**
-    - http://localhost:3000/book/5e60749dde504f144226c1ac
+    - http://localhost:3000/book/5e64261290ca145e048ce980
+    ```
+    curl -X DELETE "http://localhost:3000/book/5e64261290ca145e048ce980" -H "accept: application/json"
+    ```
+![Alt text](Books-service-Swagger-API.png "Books-service-Swagger-API")
 
 ### Customers REST API
 ![Alt text](Customers-Banner.png "Customers")
