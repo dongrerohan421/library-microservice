@@ -4,12 +4,12 @@ const showBanner = require("node-banner");
 (async () => {
     await showBanner("Customers Microservice", "Create, Get, Delete Customers.", "blue", "green");
 })();
-//Load Mongoose
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 
+const bodyParser = require("body-parser");
 app.use(bodyParser.json()); //allows application to receive JSON data through request
 
+//Load Mongoose
+const mongoose = require("mongoose");
 //Connect
 mongoose.connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.net/test?retryWrites=true&w=majority", {
         useNewUrlParser: true,
@@ -87,5 +87,5 @@ app.delete("/customer/:id", (req, res) => {
 });
 
 var listener = app.listen(5555, () => {
-    console.log("Up and running at port " + listener.address().port + " ! -- This is Customers service");
+    console.log("Up and running at port " + listener.address().port + " -- This is Customers service");
 });

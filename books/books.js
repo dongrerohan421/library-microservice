@@ -92,5 +92,5 @@ app.delete("/book/:id", (req, res) => {
 
 
 var listener = app.listen(3000, () => {
-    console.log("Up and running at port " + listener.address().port + " ! -- This is Books service");
+    console.log("Up and running at port " + listener.address().port + " -- This is Books service");
 });
