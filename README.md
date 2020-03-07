@@ -38,12 +38,25 @@ Please use below URL's to browse Customer
 
 * **Create Customers**
     - http://localhost:5555/customer
+    ```
+    curl -X POST "http://localhost:5555/customer" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"name\": \"Sai\", \"age\": 27, \"address\": \"Detroit\"}"
+    ```
 * **Get Customers**
     - http://localhost:5555/customers
+    ```
+    curl -X GET "http://localhost:5555/customers" -H "accept: application/json"
+    ```
 * **Get Customer by ID**
-    - http://localhost:5555/customer/5e6197b11e2dc11dbe636aa0
+    - http://localhost:5555/customer/5e642d0d6d0382618578e1f3
+    ```
+    curl -X GET "http://localhost:5555/customer/5e642d0d6d0382618578e1f3" -H "accept: application/json"
+    ```
 * **Delete Customer by ID**
-    - http://localhost:5555/customer/5e619dd66ba3a21e4b796294
+    - http://localhost:5555/customer/5e642d0d6d0382618578e1f3
+    ```
+    curl -X DELETE "http://localhost:5555/customer/5e642d0d6d0382618578e1f3" -H "accept: application/json"
+    ```
+![Alt text](Customers-service-Swagger-API.png "Customers-service-Swagger-API")
 
 ### Orders REST API
 ![Alt text](Orders-Banner.png "Orders")

@@ -1,0 +1,177 @@
+{
+    "info": {
+        "title": "Customers service Swagger API",
+        "version": "1.0.0",
+        "description": "Customers service RESTful API with Swagger",
+        "contact": {
+            "name": "Rohan Dongre",
+            "email": "dongrerohan421@gmail.com",
+            "url": "https://www.github.com/dongrerohan421"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:5555",
+    "basePath": "",
+    "swagger": "2.0",
+    "tags": [{
+        "name": "Customers",
+        "description": "Customers service REST API"
+    }],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/customers": {
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get all Customers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customers"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad request!"
+                    }
+                }
+            }
+        },
+        "/customer": {
+            "post": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Create new Customer",
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Customer that we want create",
+                    "schema": {
+                        "$ref": "#/definitions/Customer"
+                    }
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post request!"
+                    }
+                }
+            }
+        },
+        "/customer/{id}": {
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of the Customer that we want",
+                "type": "string"
+            }],
+            "get": {
+                "tags": [
+                    "Customers"
+                ],
+                "summary": "Get Customer with given Id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "description": "Customer with ID",
+                    "schema": {
+                        "$ref": "#/definitions/id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Customer not found!"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Customer with given ID",
+                "tags": [
+                    "Customers"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "description": "Delete Customer with id",
+                    "schema": {
+                        "$ref": "#/definitions/id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "404": {
+                        "description": "Failed. Customer not found."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "objectID": {
+                    "type": "string"
+                }
+            }
+        },
+        "Customer": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "number"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "Customers": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/Customer"
+            }
+        }
+    },
+    "responses": {},
+    "parameters": {},
+    "securityDefinitions": {}
+}
