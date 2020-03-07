@@ -1,12 +1,12 @@
-import { model, SchemaType } from "mongoose";
+const mongoose = require("mongoose");
 
-model("Order", {
+mongoose.model("Order", {
     customerID: {
-        type: SchemaType.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         require: true
     },
     bookID: {
-        type: SchemaType.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         require: true
     },
     initialDate: {
