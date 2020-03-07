@@ -1,5 +1,5 @@
-# library-microservice
-This is Library app with REST API's developed in NodeJs, Express, MongoDB
+# library-app
+This is Library app with REST API's developed in NodeJs, Express, MongoDB.
 
 ### Books REST API
 ![Alt text](Books-Banner.png "Books")
