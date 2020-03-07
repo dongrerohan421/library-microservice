@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
+const axios = require("axios");
 const showBanner = require("node-banner");
-const mongoose = require("mongoose");
 (async () => {
     await showBanner("Orders Microservice", "Create, Get, Delete orders.", "blue", "green");
 })();
@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json()); //allows application to receive JSON data through request
 
+const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.net/test?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -47,8 +48,33 @@ app.post("/order", (req, res) => {
 
 //Get all orders
 app.get("/orders", (req, res) => {
-    Order.find().then((orders) =>{
+    Order.find().then((orders) => {
         res.json(orders);
+    }).catch((err) => {
+        if (err) {
+            throw err;
+        }
+    });
+});
+
+//Get order by id
+app.get("/order/:id", (req, res) => {
+    Order.findById(req.params.id).then((order) => {
+        if (order) {
+            axios.get("http://localhost:5555/customer/" + order.customerID).then((response) => {
+                var orderObject = {
+                    customerName: response.data.name,
+                    bookTitle: ''
+                };
+
+                axios.get("http://localhost:3000/book/" + order.bookID).then((response) => {
+                    orderObject.bookTitle = response.data.title;
+                    res.json(orderObject);
+                });
+            });
+        } else {
+            res.send("Invalid order ID");
+        }
     }).catch((err) => {
         if (err) {
             throw err;
