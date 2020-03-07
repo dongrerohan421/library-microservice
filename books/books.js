@@ -1,22 +1,22 @@
 //Load Express
-import express from "express";
+const express = require("express");
 const app = express();
-import { json } from "body-parser";
+const bodyParser = require("body-parser");
 //Load Mongoose
-import { model, connect } from "mongoose";
+const mongoose = require("mongoose");
 
-import showBanner from "node-banner";
+const showBanner = require("node-banner");
 (async () => {
     await showBanner("Books Microservice", "Create, Get, Delete Books.", "blue", "green");
 })();
 
-import "./book";
-const Book = model("Book");
+require("./book");
+const Book = mongoose.model("Book");
 
-app.use(json());
+app.use(bodyParser.json());
 
 //Connect
-connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://kali-denali:Axcvbn5@booksservice-ewcap.mongodb.net/test?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     },

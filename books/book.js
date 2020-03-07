@@ -1,6 +1,6 @@
-import { model } from "mongoose";
+const mongoose = require("mongoose");
 
-model("Book", {
+mongoose.model("Book", {
     //title, author, numberPages, publisher
     title: {
         type: String,
