@@ -119,17 +119,15 @@
                 "tags": [
                     "Books"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "required": true,
-                        "description": "Delete Book with id",
-                        "schema": {
-                            "$ref": "#/definitions/id"
-                        }
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "description": "Delete Book with id",
+                    "schema": {
+                        "$ref": "#/definitions/id"
                     }
-                ],
+                }],
                 "responses": {
                     "200": {
                         "description": "OK",
