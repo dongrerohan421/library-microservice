@@ -45,6 +45,17 @@ app.post("/order", (req, res) => {
     });
 });
 
+//Get all orders
+app.get("/orders", (req, res) => {
+    Order.find().then((orders) =>{
+        res.json(orders);
+    }).catch((err) => {
+        if (err) {
+            throw err;
+        }
+    });
+});
+
 var listener = app.listen(7777, () => {
     console.log("Up and running at port " + listener.address().port + " -- This is Orders service");
 });
