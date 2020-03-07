@@ -32,6 +32,18 @@ Please use below URL's to browse Customer
 * **Delete Customer by ID**
     - http://localhost:5555/customer/5e619dd66ba3a21e4b796294
 
+### Orders REST API
+![Alt text](Orders-Banner.png "Orders")
+Please free to modify the server port. The current state uses 5555 as server port.
+
+Please use below URL's to browse Customer
+
+* **Create CustoOrdersmers**
+    - http://localhost:7777/order
+* **Get Orders**
+    - http://localhost:7777/orders
+* **Get Order by ID**
+    - http://localhost:7777/order/5e63eb9f90bfc34a8f98d1c6
 
 - **To install npm packages**
 ```
@@ -40,6 +52,7 @@ npm install --save body-parser
 npm install --save mongoose
 npm install -g nodemon
 npm install --save node-banner
+npm install --save request
 ```
 - **To Start app:**
 ```
