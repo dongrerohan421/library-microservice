@@ -64,9 +64,9 @@ Please use below URL's to browse Customer
 
 ### Orders REST API
 ![Alt text](Orders-Banner.png "Orders")
-Please free to modify the server port. The current state uses 5555 as server port.
+Please free to modify the server port. The current state uses 7777 as server port.
 
-Please use below URL's to browse Customer
+Please use below URL's to browse Order
 
 * **Create CustoOrdersmers**
     - http://localhost:7777/order
