@@ -1,0 +1,180 @@
+{
+    "info": {
+        "title": "Books service Swagger API",
+        "version": "1.0.0",
+        "description": "Books service RESTful API with Swagger",
+        "contact": {
+            "name": "Rohan Dongre",
+            "email": "dongrerohan421@gmail.com",
+            "url": "https://www.github.com/dongrerohan421"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "swagger": "2.0",
+    "tags": [{
+        "name": "Books",
+        "description": "Book service REST API"
+    }],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get all Books",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Books"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad request!"
+                    }
+                }
+            }
+        },
+        "/book": {
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Create new Book",
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Book that we want create",
+                    "schema": {
+                        "$ref": "#/definitions/Book"
+                    }
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post request!"
+                    }
+                }
+            }
+        },
+        "/book/{id}": {
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of the Book that we want",
+                "type": "string"
+            }],
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get Book with given Id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "description": "Book with ID",
+                    "schema": {
+                        "$ref": "#/definitions/id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Book"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Book not found!"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Book with given ID",
+                "tags": [
+                    "Books"
+                ],
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "description": "Delete Book with id",
+                    "schema": {
+                        "$ref": "#/definitions/id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "404": {
+                        "description": "Failed. Book not found."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "objectID": {
+                    "type": "string"
+                }
+            }
+        },
+        "Book": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "numberPages": {
+                    "type": "number"
+                },
+                "publisher": {
+                    "type": "string"
+                }
+            }
+        },
+        "Books": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/Book"
+            }
+        }
+    },
+    "responses": {},
+    "parameters": {},
+    "securityDefinitions": {}
+}

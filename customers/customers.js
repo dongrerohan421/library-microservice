@@ -1,9 +1,17 @@
 const express = require("express");
 const app = express();
+
+const swaggerUi = require("swagger-ui-express");
+swaggerDocument = require('./swagger.json');
+
 const showBanner = require("node-banner");
 (async () => {
     await showBanner("Customers Microservice", "Create, Get, Delete Customers.", "blue", "green");
-})();
+})().catch((err) => {
+    if (err) {
+        console.log(err);
+    }
+});
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json()); //allows application to receive JSON data through request
@@ -62,7 +70,7 @@ app.get("/customer/:id", (req, res) => {
         if (customer) {
             res.json(customer);
         } else {
-            res.ssend("Invalid ID");
+            res.send("Invalid ID");
         }
     }).catch((err) => {
         if (err) {
@@ -87,5 +95,6 @@ app.delete("/customer/:id", (req, res) => {
 });
 
 var listener = app.listen(5555, () => {
+    app.use('/api-docs/customers', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     console.log("Up and running at port " + listener.address().port + " -- This is Customers service");
 });

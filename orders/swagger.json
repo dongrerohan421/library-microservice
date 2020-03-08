@@ -1,0 +1,154 @@
+{
+    "info": {
+        "title": "Orders service Swagger API",
+        "version": "1.0.0",
+        "description": "Orders service RESTful API with Swagger",
+        "contact": {
+            "name": "Rohan Dongre",
+            "email": "dongrerohan421@gmail.com",
+            "url": "https://www.github.com/dongrerohan421"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:7777",
+    "basePath": "",
+    "swagger": "2.0",
+    "tags": [{
+        "name": "Orders",
+        "description": "Orders service REST API"
+    }],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/orders": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get all Orders",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Orders"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad request!"
+                    }
+                }
+            }
+        },
+        "/order": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Create new Order",
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Order that we want create",
+                    "schema": {
+                        "$ref": "#/definitions/Order"
+                    }
+                }],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post request!"
+                    }
+                }
+            }
+        },
+        "/order/{id}": {
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of the Order that we want",
+                "type": "string"
+            }],
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get Order with given Id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "description": "Order with ID",
+                    "schema": {
+                        "$ref": "#/definitions/id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Order not found!"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "objectID": {
+                    "type": "string"
+                }
+            }
+        },
+        "Order": {
+            "type": "object",
+            "properties": {
+                "customerID": {
+                    "type": "string"
+                },
+                "bookID": {
+                    "type": "string"
+                },
+                "initialDate": {
+                    "type": "string"
+                },
+                "deliveryDate": {
+                    "type": "string"
+                }
+            }
+        },
+        "Orders": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/Order"
+            }
+        }
+    },
+    "responses": {},
+    "parameters": {},
+    "securityDefinitions": {}
+}

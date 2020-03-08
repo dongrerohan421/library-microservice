@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+const swaggerUi = require("swagger-ui-express");
+swaggerDocument = require('./swagger.json');
+
 const axios = require("axios");
 const showBanner = require("node-banner");
 (async () => {
@@ -83,5 +86,6 @@ app.get("/order/:id", (req, res) => {
 });
 
 var listener = app.listen(7777, () => {
+    app.use('/api-docs/customers', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     console.log("Up and running at port " + listener.address().port + " -- This is Orders service");
 });
