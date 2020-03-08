@@ -28,6 +28,8 @@ Please use below URL's to browse Book
     ```
     curl -X DELETE "http://localhost:3000/book/5e64261290ca145e048ce980" -H "accept: application/json"
     ```
+* **Swagger UI**
+    - http://localhost:3000/api-docs/books/
 ![Alt text](Books-service-Swagger-API.png "Books-service-Swagger-API")
 
 ### Customers REST API
@@ -56,6 +58,8 @@ Please use below URL's to browse Customer
     ```
     curl -X DELETE "http://localhost:5555/customer/5e642d0d6d0382618578e1f3" -H "accept: application/json"
     ```
+* **Swagger UI**
+    - http://localhost:5555/api-docs/customers/
 ![Alt text](Customers-service-Swagger-API.png "Customers-service-Swagger-API")
 
 ### Orders REST API
@@ -66,10 +70,22 @@ Please use below URL's to browse Customer
 
 * **Create CustoOrdersmers**
     - http://localhost:7777/order
+    ```
+    curl -X POST "http://localhost:7777/order" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"customerID\": \"5e6197f8d5d1561dc75cc214\", \"bookID\": \"5e607b0a22674f1579dc4ffb\", \"initialDate\": \"2020-03-01\", \"deliveryDate\": \"2020-03-10\"}"
+    ```
 * **Get Orders**
     - http://localhost:7777/orders
+    ```
+    curl -X GET "http://localhost:7777/orders" -H "accept: application/json"
+    ```
 * **Get Order by ID**
     - http://localhost:7777/order/5e63eb9f90bfc34a8f98d1c6
+    ```
+    curl -X GET "http://localhost:7777/order/5e63eb9f90bfc34a8f98d1c6" -H "accept: application/json"
+    ```
+* **Swagger UI**
+    - http://localhost:7777/api-docs/orders/
+![Alt text](Orders-service-Swagger-API.png "Orders-service-Swagger-API")
 
 - **To install npm packages**
 ```
@@ -79,6 +95,7 @@ npm install --save mongoose
 npm install -g nodemon
 npm install --save node-banner
 npm install --save request
+npm install --save swagger-ui-express
 ```
 - **To Start app:**
 ```
